@@ -2,7 +2,6 @@
 // === GameObject ===
 // Step 1: Declare the class keyword
 
-`name` `age` `location` `gender`
 
 class Person {
     // Step 2: Create a new constructor
@@ -20,56 +19,75 @@ return (`Hello my name is ${this.name} Fred, I am from ${this.location}`);
 // Step 1: Declare the class keyword
 class Instructor extends Person  {
     // Step 2: Create a new constructor
-    constructor(statsAttributes) {
-    super(statsAttributes);  
-    this.healthPoints = statsAttributes.healthPoints;
-    GameObject.call(this.statsAttributes);
+    constructor(teacherAttributes) {
+    super(teacherAttributes);  
+    this.specialty = teacherAttributes.specialty;
+    this.favLanguage = teacherAttributes.favLanguage;
+    this.catchPhrase = teacherAttributes.catchPhrase;
+ 
+    GameObject.call(this.teacherAttributes);
     } // Step 3: Methods
-    takeDamage() {
-    return (`${this.name} took damage`) 
-    }  // end of class
+    demo() {
+    return (`Today we are learning about ${subject}' where subject is the param passed in.`) 
+    }  
+    grade() {
+        return (`${student.name} receives a perfect score on ${subject}`) 
+        } 
+    // end of class
     
     
     
     
 
 
-// === CharacterStats ===
+// === Students ===
 
 // Step 1: Declare the class keyword
 class Students extends Instructor  {
 // Step 2: Create a new constructor
-constructor(statsAttributes) {
-super(statsAttributes);  
-this.healthPoints = statsAttributes.healthPoints;
-GameObject.call(this.statsAttributes);
+constructor(studentAttributes) {
+super(studentAttributes);  
+this.previousBackground = studentAttributes.previousBackground;
+this.className = studentAttributes.className;
+this.favSubjects = studentAttributes.favSubjects;
+
+GameObject.call(this.studentAttributes);
 } // Step 3: Methods
-takeDamage() {
-return (`${this.name} took damage`) 
+listsSubjects() {
+console.log (`${this.favSubjects} is the list of the student's favoriteSubjects`) 
+} 
+} 
+PRAssignment() {
+return (`${student.name} has submitted a PR for ${subject}`) 
 }  // end of class
+sprintChallenge() {
+    return (`${student.name} has begun sprint challenge on ${subject}`) 
+    }
 
 
 
+// === Project Managers ===
 
 // Step 1: Declare the class keyword
-class Project Managers extends Instructor {
+class ProjectManagers extends Instructor {
      // Step 2: Create a new constructor
-constructor(humanoidAttributes){
-this.team = humanoidAttributes.team;
-this.weapons = humanoidAttributes.weapons;
-this.language = humanoidAttributes.language;
-CharacterStats.call(this.humanoidAttributes);
+constructor(pmAttributes){
+this.gradClassName = pmAttributes.gradClassName;
+this.favInstructor = pmAttributes.favInstructor;
+CharacterStats.call(this.pmAttributes);
 } // Step 3: Methods
 //* greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
-greet() {
-return ('${this.name} offers a greeting in ${this.language}.');
+standUp() {
+return ('${this.name} announces to ${this.channel}, @channel standy times!​​​​​');
 } // end of class
 //methods for this constructor 
 //Must place new method AFTER the Object.create();
 //* should inherit takeDamage() from CharacterStats
-takeDamage() {
-return (`${this.name} took damage`) 
+debugsCode() {
+return (`${this.name} debugs ${this.student.name}'s code on ${this.subject}`) 
 }
+
+
 
 
 // ```js

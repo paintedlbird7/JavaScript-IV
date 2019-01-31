@@ -44,7 +44,7 @@ class GameObject {
   class CharacterStats extends GameObject  {
     // Step 2: Create a new constructor
     constructor(statsAttributes) {
-    super(GameObject);  
+    super(statsAttributes);  
     this.healthPoints = statsAttributes.healthPoints;
     GameObject.call(this.statsAttributes);
   } // Step 3: Methods
