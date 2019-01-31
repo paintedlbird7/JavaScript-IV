@@ -1,5 +1,4 @@
 // CODE here for your Lambda Classes
-// === GameObject ===
 // Step 1: Declare the class keyword
 
 
@@ -25,13 +24,13 @@ class Instructor extends Person  {
     this.favLanguage = teacherAttributes.favLanguage;
     this.catchPhrase = teacherAttributes.catchPhrase;
  
-    GameObject.call(this.teacherAttributes);
+    Person.call(this.teacherAttributes);
     } // Step 3: Methods
     demo() {
-    return (`Today we are learning about ${subject}' where subject is the param passed in.`) 
+    return (`Today we are learning about ${this.subject}' where subject is the param passed in.`) 
     }  
     grade() {
-        return (`${student.name} receives a perfect score on ${subject}`) 
+        return (`${this.student.name} receives a perfect score on ${this.subject}`) 
         } 
     // end of class
     
@@ -51,17 +50,17 @@ this.previousBackground = studentAttributes.previousBackground;
 this.className = studentAttributes.className;
 this.favSubjects = studentAttributes.favSubjects;
 
-GameObject.call(this.studentAttributes);
+Person.call(this.studentAttributes);
 } // Step 3: Methods
 listsSubjects() {
-console.log (`${this.favSubjects} is the list of the student's favoriteSubjects`) 
+console.log (`${this.favSubjects} is the list of the student's ${this.favoriteSubjects}`) 
 } 
 } 
 PRAssignment() {
-return (`${student.name} has submitted a PR for ${subject}`) 
+return (`${this.student.name} has submitted a PR for ${this.subject}`) 
 }  // end of class
 sprintChallenge() {
-    return (`${student.name} has begun sprint challenge on ${subject}`) 
+    return (`${this.student.name} has begun sprint challenge on ${this.subject}`) 
     }
 
 
@@ -74,7 +73,7 @@ class ProjectManagers extends Instructor {
 constructor(pmAttributes){
 this.gradClassName = pmAttributes.gradClassName;
 this.favInstructor = pmAttributes.favInstructor;
-CharacterStats.call(this.pmAttributes);
+Person.call(this.pmAttributes);
 } // Step 3: Methods
 //* greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
 standUp() {
@@ -99,5 +98,24 @@ return (`${this.name} debugs ${this.student.name}'s code on ${this.subject}`)
 //   favLanguage: 'JavaScript',
 //   specialty: 'Front-end',
 //   catchPhrase: `Don't forget the homies`
-// });
-```
+// })
+
+// const student = new Student({
+//     name: 'Bam Bam',
+//     location: 'Bedrock',
+//     age: 46,
+//     gender: 'female',
+//     favLanguage: 'JavaScript',
+//     specialty: 'Back-end',
+//     catchPhrase: `Bam Bam Bam`
+//   })
+
+//   const pm = new ProjectManagers({
+//     name: 'Pebbles',
+//     location: 'Bedrock',
+//     age: 36,
+//     gender: 'female',
+//     favLanguage: 'Java',
+//     specialty: 'Back-end',
+//     catchPhrase: `Pebbles and Rocks`
+//   })
