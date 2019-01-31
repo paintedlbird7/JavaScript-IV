@@ -10,172 +10,158 @@ Prototype Refactor
 */
 
 
-/*
-  === GameObject ===
-  * createdAt
-  * name
-  * dimensions (These represent the character's size in the video game)
-  * destroy() // prototype method that returns: '{this.name} was removed from the game.'
-*/
-// Build constructor 
-function GameObject(attributes) {
+
+//   === GameObject ===
+// * createdAt
+//   * name
+//   * dimensions (These represent the character's size in the video game)
+//   * destroy() // prototype method that returns: '{this.name} was removed from the game.'
+
+// Build class 
+
+ // Step 1: Declare the class keyword
+class GameObject {
+         // Step 2: Create a new constructor
+    constructor(attributes) {
     this.name = attributes.name;
     this.createdAt = attributes.createdAt;
     this.dimensions = attributes.dimensions;  
-  }
-  
-  // Method for this constructor
-  GameObject.prototype.destroy = function() {
+  }    // Step 3: Methods
+  destroy() {
     return (`${this.name} was removed from the game`);
-  }
-  
-  // function Child(childAttributes) {
-  //   //bind the this keyword to the Parent constructor
-  //   GameObject.call(this.childAttributes);
-  //   this.destroy = childAttributes.destroy;
-  // }
+  }  // end of class
+
+
   
   
   /*
     === CharacterStats ===
-    * healthPoints
-    * takeDamage() // prototype method -> returns the string '<object name> took damage.'
-    * should inherit destroy() from GameObject's prototype
+      * healthPoints
+  * takeDamage() // prototype method -> returns the string '<object name> took damage.'
+  * should inherit destroy() from GameObject's prototype
   */
-  function CharacterStats(statsAttributes) {
+   // Step 1: Declare the class keyword
+  class CharacterStats extends GameObject  {
+    // Step 2: Create a new constructor
+    constructor(statsAttributes) {
+    super(GameObject);  
     this.healthPoints = statsAttributes.healthPoints;
-      GameObject.call(this.statsAttributes);
-  };
-  
-  // Inheritance
-  CharacterStats.prototype = Object.create(GameObject.prototype);
-  
-  //methods for this constructor 
-  //Must place new method AFTER the Object.create();
-  CharacterStats.prototype.takeDamage = function() {
+    GameObject.call(this.statsAttributes);
+  } // Step 3: Methods
+  takeDamage() {
     return (`${this.name} took damage`) 
-  }
-  
+  }  // end of class
   
   
   /*
-    === Humanoid (Having an appearance or character resembling that of a human.) ===
+    === Humanoid ===
     * team
-    * weapons
-    * language
-    * greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
-    * should inherit destroy() from GameObject through CharacterStats
-    * should inherit takeDamage() from CharacterStats
+  * weapons
+  * language
+  * greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
+  * should inherit destroy() from GameObject through CharacterStats
+  * should inherit takeDamage() from CharacterStats
   */
-  function Humanoid (humanoidAttributes){
+    // Step 1: Declare the class keyword
+  class Humanoid extends CharacterStats {
+          // Step 2: Create a new constructor
+  constructor(humanoidAttributes){
   this.team = humanoidAttributes.team;
   this.weapons = humanoidAttributes.weapons;
   this.language = humanoidAttributes.language;
   CharacterStats.call(this.humanoidAttributes);
-  }
-  
-  //Humanoid methods
-  //* greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
-  Humanoid.prototype.greet = function() {
-        return ('${this.name} offers a greeting in ${this.language}.');
-      }
-  
-  // Inheritance
-  // * should inherit destroy() from GameObject through CharacterStats
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
-  
-  //methods for this constructor 
+  } // Step 3: Methods
+    //* greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
+  greet() {
+    return ('${this.name} offers a greeting in ${this.language}.');
+  } // end of class
+    //methods for this constructor 
   //Must place new method AFTER the Object.create();
   //* should inherit takeDamage() from CharacterStats
-  Humanoid.prototype.takeDamage = function() {
+  takeDamage() {
     return (`${this.name} took damage`) 
   }
+
   
+//   // Inheritance
+//   // * should inherit destroy() from GameObject through CharacterStats
+//   Humanoid.prototype = Object.create(CharacterStats.prototype);
   
-  // const Humanoid = {
-  //   name: "Humanoid",
-  //   weapons: knife,
-  //   team: CharacterStats,
-  //   language: English,
-  //   healthPoints: 0,
-  //   greet () {
-  //     return '${this.name} offers a greeting in ${language}.';
-  //   },
-  //   takeDamage() {
-  //     return `${name} took damage.`;
-  //   },
-  // };
+
+
   
   
   
-  // const mage = new Humanoid({
-  //   createdAt: new Date(),
-  //   dimensions: {
-  //     length: 2,
-  //     width: 1,
-  //     height: 1,
-  //   },
-  //   healthPoints: 5,
-  //   name: 'Bruce',
-  //   team: 'Mage Guild',
-  //   weapons: [
-  //     'Staff of Shamalama',
-  //   ],
-  //   language: 'Common Tongue',
-  // });
+
+//   Uncomment to test
+  const mage = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 1,
+      height: 1,
+    },
+    healthPoints: 5,
+    name: 'Bruce',
+    team: 'Mage Guild',
+    weapons: [
+      'Staff of Shamalama',
+    ],
+    language: 'Common Tongue',
+  });
   
   
   
   
-  //   const swordsman = new Humanoid({
-  //     createdAt: new Date(),
-  //     dimensions: {
-  //       length: 2,
-  //       width: 2,
-  //       height: 2,
-  //     },
-  //     healthPoints: 15,
-  //     name: 'Sir Mustachio',
-  //     team: 'The Round Table',
-  //     weapons: [
-  //       'Giant Sword',
-  //       'Shield',
-  //     ],
-  //     language: 'Common Tongue',
-  //   });
+    const swordsman = new Humanoid({
+      createdAt: new Date(),
+      dimensions: {
+        length: 2,
+        width: 2,
+        height: 2,
+      },
+      healthPoints: 15,
+      name: 'Sir Mustachio',
+      team: 'The Round Table',
+      weapons: [
+        'Giant Sword',
+        'Shield',
+      ],
+      language: 'Common Tongue',
+    });
   
   
   
   
-  //   const archer = new Humanoid({
-  //     createdAt: new Date(),
-  //     dimensions: {
-  //       length: 1,
-  //       width: 2,
-  //       height: 4,
-  //     },
-  //     healthPoints: 10,
-  //     name: 'Lilith',
-  //     team: 'Forest Kingdom',
-  //     weapons: [
-  //       'Bow',
-  //       'Dagger',
-  //     ],
-  //     language: 'Elvish',
-  //   });
+    const archer = new Humanoid({
+      createdAt: new Date(),
+      dimensions: {
+        length: 1,
+        width: 2,
+        height: 4,
+      },
+      healthPoints: 10,
+      name: 'Lilith',
+      team: 'Forest Kingdom',
+      weapons: [
+        'Bow',
+        'Dagger',
+      ],
+      language: 'Elvish',
+    });
   
   
   
-  //   console.log(mage.createdAt); // Today's date
-    // console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-    // console.log(swordsman.healthPoints); // 15
-    // console.log(mage.name); // Bruce
-    // console.log(swordsman.team); // The Round Table
-    // console.log(mage.weapons); // Staff of Shamalama
-    // console.log(archer.language); // Elvish
-    // console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-    // console.log(mage.takeDamage()); // Bruce took damage.
-    // console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+    console.log(mage.createdAt); // Today's date
+    console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+    console.log(swordsman.healthPoints); // 15
+    console.log(mage.name); // Bruce
+    console.log(swordsman.team); // The Round Table
+    console.log(mage.weapons); // Staff of Shamalama
+    console.log(archer.language); // Elvish
+    console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+    console.log(mage.takeDamage()); // Bruce took damage.
+    console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
   
   
   
