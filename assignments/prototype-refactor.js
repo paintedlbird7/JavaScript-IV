@@ -28,9 +28,9 @@ class GameObject {
     this.dimensions = attributes.dimensions;  
   }    // Step 3: Methods
   destroy() {
-    return (`${this.name} was removed from the game`);
+    return `${this.name} was removed from the game`;
   }  // end of class
-
+}
 
   
   
@@ -46,12 +46,12 @@ class GameObject {
     constructor(statsAttributes) {
     super(statsAttributes);  
     this.healthPoints = statsAttributes.healthPoints;
-    GameObject.call(this.statsAttributes);
+    this.name = statsAttributes.name;
   } // Step 3: Methods
   takeDamage() {
-    return (`${this.name} took damage`) 
+    return `${this.name} took damage`; 
   }  // end of class
-  
+}
   
   /*
     === Humanoid ===
@@ -66,22 +66,22 @@ class GameObject {
   class Humanoid extends CharacterStats {
           // Step 2: Create a new constructor
   constructor(humanoidAttributes){
-  this.team = humanoidAttributes.team;
+    super(humanoidAttributes);  
+  this.faction = humanoidAttributes.faction;
   this.weapons = humanoidAttributes.weapons;
   this.language = humanoidAttributes.language;
-  CharacterStats.call(this.humanoidAttributes);
   } // Step 3: Methods
     //* greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
   greet() {
-    return ('${this.name} offers a greeting in ${this.language}.');
+    return `${this.name} offers a greeting in ${this.language}.`;
   } // end of class
     //methods for this constructor 
   //Must place new method AFTER the Object.create();
   //* should inherit takeDamage() from CharacterStats
   takeDamage() {
-    return (`${this.name} took damage`) 
+    return `${this.name} took damage`;
   }
-
+  }
   
 //   // Inheritance
 //   // * should inherit destroy() from GameObject through CharacterStats
@@ -151,7 +151,7 @@ class GameObject {
     });
   
   
-  
+    console.log(archer.name); // Today's date
     console.log(mage.createdAt); // Today's date
     console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
     console.log(swordsman.healthPoints); // 15
