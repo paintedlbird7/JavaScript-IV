@@ -13,7 +13,7 @@ this.gender = attributes.gender;
 speak() {
 return (`Hello my name is ${this.name} Fred, I am from ${this.location}`);
 }  // end of class
-
+}
 
 // Step 1: Declare the class keyword
 class Instructor extends Person  {
@@ -23,15 +23,14 @@ class Instructor extends Person  {
     this.specialty = teacherAttributes.specialty;
     this.favLanguage = teacherAttributes.favLanguage;
     this.catchPhrase = teacherAttributes.catchPhrase;
- 
-    Person.call(this.teacherAttributes);
-    } // Step 3: Methods
+     } // Step 3: Methods
     demo() {
     return (`Today we are learning about ${this.subject}' where subject is the param passed in.`) 
     }  
     grade() {
         return (`${this.student.name} receives a perfect score on ${this.subject}`) 
         } 
+    }
     // end of class
     
     
@@ -42,27 +41,26 @@ class Instructor extends Person  {
 // === Students ===
 
 // Step 1: Declare the class keyword
-class Students extends Instructor  {
+class Students extends Person  {
 // Step 2: Create a new constructor
 constructor(studentAttributes) {
 super(studentAttributes);  
 this.previousBackground = studentAttributes.previousBackground;
 this.className = studentAttributes.className;
 this.favSubjects = studentAttributes.favSubjects;
-
-Person.call(this.studentAttributes);
 } // Step 3: Methods
 listsSubjects() {
 console.log (`${this.favSubjects} is the list of the student's ${this.favoriteSubjects}`) 
 } 
-} 
-PRAssignment() {
-return (`${this.student.name} has submitted a PR for ${this.subject}`) 
+ 
+PRAssignment(subject) {
+return (`${this.student.name} has submitted a PR for ${this.subject}`); 
 }  // end of class
-sprintChallenge() {
-    return (`${this.student.name} has begun sprint challenge on ${this.subject}`) 
-    }
 
+sprintChallenge() {
+    return (`${this.student.name} has begun sprint challenge on ${this.subject}`);
+    }
+}
 
 
 // === Project Managers ===
@@ -77,7 +75,7 @@ Person.call(this.pmAttributes);
 } // Step 3: Methods
 //* greet() // prototype method -> returns the string '<object name> offers a greeting in <object language>.'
 standUp() {
-return ('${this.name} announces to ${this.channel}, @channel standy times!​​​​​');
+return (`${this.name} announces to ${this.channel}, @channel standy times!​​​​​`);
 } // end of class
 //methods for this constructor 
 //Must place new method AFTER the Object.create();
@@ -85,7 +83,7 @@ return ('${this.name} announces to ${this.channel}, @channel standy times!​​
 debugsCode() {
 return (`${this.name} debugs ${this.student.name}'s code on ${this.subject}`) 
 }
-
+}
 
 
 
