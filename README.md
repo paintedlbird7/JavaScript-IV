@@ -2,7 +2,7 @@
 
 This challenge focuses on classes in JavaScript using the new `class` keyword.
 
-## Assignment Description
+## A ssignment Description
 
 You already pretty much know all about classes but you're used to seeing them built in the following context:
 
@@ -58,6 +58,8 @@ const fred = new Instructor({
 * Person receives `speak` as a method.
 * This method logs out a phrase `Hello my name is Fred, I am from Bedrock` where `name` and `location` are the object's own props
 
+
+
 #### Instructor
 
 * Now that we have a Person as our base class, we'll build our Instructor class.
@@ -69,6 +71,9 @@ const fred = new Instructor({
 * Instructor has the following methods:
   * `demo` receives a `subject` string as an argument and logs out the phrase 'Today we are learning about {subject}' where subject is the param passed in.
   * `grade` receives a `student` object and a `subject` string as arguments and logs out '{student.name} receives a perfect score on {subject}'
+
+
+
 
 #### Student
 
@@ -83,6 +88,8 @@ const fred = new Instructor({
   * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
   * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
 
+
+
 #### Project Manager
 
 * Now that we have instructors and students, we'd be nowhere without our PM's
@@ -93,6 +100,22 @@ const fred = new Instructor({
 * ProjectManagers have the following Methods:
   * `standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
   * `debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### Stretch Problem
 
